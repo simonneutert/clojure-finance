@@ -4,12 +4,15 @@
   [rate year]
   (Math/pow (+ 1 (/ rate 100)) year))
 
+(defn- net-present-value-of-return
+  [idx [return rate]]
+  (let [year (+ 1 idx)]
+    (/ return (discount-rate-at-year rate year))))
+
 (defn- net-capital-return-over-periods
   [list-of-return-and-rate]
   (->> (map-indexed
-        (fn [idx [return rate]]
-          (let [year (+ 1 idx)]
-            (/ return (discount-rate-at-year rate year))))
+        #(net-present-value-of-return %1 %2)
         list-of-return-and-rate)
        (apply +)))
 
