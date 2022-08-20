@@ -15,13 +15,13 @@ A Clojure library designed to help you calculate financial decision for investme
          105.0))))
 
 (deftest return-on-investment-test
-  (testing "return of interest after two year"
+  (testing "return of interest after two years"
     (is (=
          (return-of-interest-at-fixed-rate-for-given-years 100 5 2)
          110.25))))
 
 (deftest years-to-double-investment-at-fixed-rate-test
-  (testing "time it takes to double investment"
+  (testing "time it takes to double an investment"
     (is (=
          (years-to-double-investment-at-fixed-rate 5)
          15))))
@@ -34,7 +34,7 @@ A Clojure library designed to help you calculate financial decision for investme
          1e-4))))
 
 (deftest net-capital-value-over-periods-3-periods-test
-  (testing "the net capital value of a 3 year investment with same rate"
+  (testing "the net capital value of a 3 year investment with an interest rate of 4 %"
     (is (close-to
          (net-capital-value-over-periods 22 [[4 4] [10 4] [12 4]])
          1.7596723
